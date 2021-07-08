@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block currpage %}{% endblock currpage %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="row">
+        <form class="col-md-6 col-lg-4 offset-md-3 offset-md-4" action="/delete-account" method="POST">
+            <h1 class="h2 mb-4 text-center">Delete Account</h1>
+            {% with messages=get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+            {% for category,message in messages %}
+            <div class="mb-3 alert alert-{{category}}" role="alert">
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <p>Please confirm your password to delete your account.</p>
+            <div class="mb-3 form-group">
+                <label for="inputPassword1">Password</label>
+                <input id="inputPassword1" class="form-control" name="password" type="password" autocomplete required></intput>
+            </div>
+            <p class="mb-3">By confirming Delete Account, your account data and your urls will get permanently deleted.</p>
+            <button type="submit" class="btn btn-primary">Confirm</button>
+            <a class="btn btn-secondary" href="/">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock body %}

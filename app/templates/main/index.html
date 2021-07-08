@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block currpage %}Home{% endblock currpage %}
+{% block homepage %}active disabled{% endblock homepage %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+            <h1 class="h2 text-center">URL Shortener</h1>
+            {% with messages=get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+            {% for category,message in messages %}
+            <div class=" my-2 alert alert-{{category}} alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form class="my-4" action="/" method="POST">
+                <div class="form-group mb-3">
+                    <label for="inputUrl">URL</label>
+                    <input type="url" name="original_url" id="inputUrl" class="form-control" placeholder="URL to shorten" required>
+                </div>
+                <label for="inputSlug1" class="form-label">Custom back-half (optional)</label>
+                <div class="input-group mb-0">
+                    <span class="input-group-text" id="hostURL">{{request.host_url}}</span>
+                    <input type="text" name="slug" class="form-control" id="inputSlug1" aria-describedby="slugHelpBlock">
+                </div>
+                <div class="form-text mb-3" id="slugHelpBlock">Only upper-case and lower-case letters, numbers and dashes(-) are allowed.</div>
+                <button type="submit" class="btn btn-primary">Shorten URL</button>
+            </form>
+            {% if short_url %}
+            <p class="fs-5">Short URL : <a href="{{short_url}}" target="_blank">{{short_url}}</a></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock body %}

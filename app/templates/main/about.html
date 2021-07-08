@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block currpage %}About{% endblock currpage %}
+{% block aboutpage %}active disabled{% endblock aboutpage %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="row text-center">
+        <h1 class="h1 mb-4">URL Shortener</h1>
+        <p class="lead fs-5">URL Shortener is an amazing tool. You can shorten your long urls to enhance your
+            productivity.</p>
+        <p class="lead fs-5">Simply go to homepage and enter your long url in 'URL' field.If you wish to use custom back-half URL, 
+            simply enter your custom back-half string in 'custom back-half' field. 
+            However this is an optional step. 
+            If you wish, you can leave 'custom back-half' field empty. 
+            Then URL Shortener will automatically generate a short URL consisting of upper-case and lower-case letters and numbers. 
+            Length of automatically generated URL will be on first come first serve basis. 
+            The URL shortened first will have small length short URL than late ones.</p>
+    </div>
+</div>
+{% endblock body %}

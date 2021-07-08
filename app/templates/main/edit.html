@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block currpage %}Edit URL{% endblock currpage %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="row">
+        <h1 class="h2 mb-4 text-center">Edit URL</h1>
+        <form class="col-lg-8 offset-lg-2 col-md-10 offset-md-1" action="/edit/{{url.slug}}" method="POST">
+            <div class="form-group mb-3">
+                <label for="inputOriginalURL">Original URL</label>
+                <input class="form-control" type="url" name="original_url" id="nputOriginalURL" value="{{url.original_url}}" required>
+            </div>
+            {% set short_url=request.host_url+url.slug %}
+            <div class="form-group mb-3">
+                <label for="inputShortURL">Short URL</label>
+                <input class="form-control" type="url" name="short_url" id="inputShortURL" value="{{short_url}}" disabled>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+            <a class="btn btn-secondary" href="/statistics">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock body %}

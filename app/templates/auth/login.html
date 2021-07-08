@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block currpage %}Login{% endblock currpage %}
+{% block loginpage %}active disabled{% endblock loginpage %}
+{% block body %}
+<div class="container my-5">
+    <div class="row">
+        <form class="col-lg-4 offset-lg-4 col-md-6 offset-md-3" action="/login" method="POST">
+            <div class="d-flex flex-column align-items-center">
+                <h1 class="h2 mb-3 text-center">Login</h1>
+            </div>
+            {% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category,message in messages %}
+            <div class="alert alert-{{category}}">{{message}}</div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <div class="mb-3">New user? <a href="/signup"> Create Account</a></div>
+            <div class="mb-3">
+                <label for="inputEmail1" class="form-label">Email address</label>
+                <input type="email" name="email" class="form-control" id="inputEmail1">
+            </div>
+            <div class="mb-3">
+                <label for="inputPassword1" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="inputPassword1" autocomplete required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a href="/" class="btn btn-outline-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock body %}
