@@ -2,7 +2,6 @@
 # URL Shortener
 
 URL Shortener is a simple tool used to shorten long URLs to just 3 characters. It also allows to short url to custom back-half. You can also view/update/delete your short urls after login/signup.
-Deployed on Heroku at https://shorturl-askandola.herokuapp.com/
 
 ## Tech Stack
 
